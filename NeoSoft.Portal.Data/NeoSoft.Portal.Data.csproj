@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EnterpriseLibrary.Common.NetCore" Version="6.3.0" />
+    <PackageReference Include="EnterpriseLibrary.Data.NetCore" Version="6.0.1313" />
+    <PackageReference Include="GeoTimeZone" Version="4.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
+    <PackageReference Include="TimeZoneConverter" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NeoSoft.Portal.Data.Interface\NeoSoft.Portal.Data.Interface.csproj" />
+    <ProjectReference Include="..\NeoSoft.Portal.Model\NeoSoft.Portal.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="HDFC.Core.CacheProvider.Interface">
+      <HintPath>..\Sharedbin\HDFC.Core.CacheProvider.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="HDFC.Core.CacheProvider.MemoryCache">
+      <HintPath>..\Sharedbin\HDFC.Core.CacheProvider.MemoryCache.dll</HintPath>
+    </Reference>
+    <Reference Include="HDFC.Core.Common">
+      <HintPath>..\Sharedbin\HDFC.Core.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.hosting.abstractions\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <HintPath>..\Sharedbin\System.Data.Linq.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

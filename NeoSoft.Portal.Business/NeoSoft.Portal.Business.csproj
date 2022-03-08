@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Hegic.TwoWheeler.Business.csproj.vspscc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NEST" Version="6.6.0" />
+    <PackageReference Include="System.DirectoryServices.AccountManagement" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NeoSoft.Portal.Data.Interface\NeoSoft.Portal.Data.Interface.csproj" />
+   
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="HDFC.Core.Common">
+      <HintPath>..\Sharedbin\HDFC.Core.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="HDFC.Core.ElasticSearch">
+      <HintPath>..\Sharedbin\HDFC.Core.ElasticSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="HDFC.Core.Logging">
+      <HintPath>..\Sharedbin\HDFC.Core.Logging.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

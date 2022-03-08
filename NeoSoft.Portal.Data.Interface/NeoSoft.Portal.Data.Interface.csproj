@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Hegic.TwoWheeler.Data.Interface.csproj.vspscc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NeoSoft.Portal.Model\NeoSoft.Portal.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="HDFC.Shared.Entities">
+      <HintPath>..\Sharedbin\HDFC.Shared.Entities.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
+

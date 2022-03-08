@@ -1,0 +1,185 @@
+﻿@model IEnumerable<FrontEndApp.EmployeeMaster>
+
+
+@*<h1 class="text-center">Employees</h1>
+
+    <br />
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeCode)
+                </th>
+
+                <th>
+                    <a href="@Url.Action("Create","Employee")" class="btn btn-success">Add Employee</a>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeCode)
+        </td>
+
+
+        <td>
+            <a href="@Url.Action("Edit","Employee", new {@id=@item.Row_Id})" class="btn btn-success">Edit</a>
+            <a href="@Url.Action("Delete","Employee", new {@id=@item.Row_Id})" onclick="return confirm('Are you sure you want to delete this row?')" class="btn btn-danger">Delete</a>
+        </td>
+
+    </tr>
+    }
+        </tbody>
+    </table>*@
+
+@{ ViewBag.Title = "jQGrid List"; }
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<link href="~/Content/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" />
+<h2>Employee List</h2>
+<div>
+    <div style="text-align:right;margin:5px;">
+        <a href="@Url.Action("Create","Employee")" class="btn btn-success">Add Employee</a>
+    </div>
+    <table id="grid"></table>
+    <div id="pager"></div>
+</div>
+
+@{
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                            <script src="~/Scripts/jquery-ui-1.10.0.min.js"></script>
+                                        <script src="~/Scripts/i18n/grid.locale-en.js"></script>
+                                                    <script src="~/Scripts/jquery.jqGrid.min.js"></script>
+
+
+
+                                                    <script type="text/javascript">
+                                                                    $(function () {
+                                                                        //alert('test');
+                                                                        //debugger;
+                                                                        $("#grid").jqGrid
+                                                                            ({
+                                                                                url: "/Employee/GetValues",
+                                                                                datatype: 'json',
+                                                                                mtype: 'Get',
+                                                                                //table header name
+                                                                                colNames: ['FirstName', 'LastName','CountryName','StateName','CityName','EmailAddress','PanNumber','PassportNumber','Edit','Delete'],
+                                                                                //colModel takes the data from controller and binds to grid
+                                                                                colModel: [
+
+                                                                                   
+                                                                                     {
+                                                                                        key: false,
+                                                                                        name: 'FirstName',
+                                                                                        index: 'FirstName',
+                                                                                        editable: false
+                                                                                    }
+                                                                                    , {
+                                                                                        key: false,
+                                                                                        name: 'LastName',
+                                                                                        index: 'LastName',
+                                                                                        editable: false
+                                                                                    }
+                                                                                    , {
+                                                                                        key: false,
+                                                                                        name: 'CountryName',
+                                                                                        index: 'CountryName',
+                                                                                        editable: false
+                                                                                    }
+                                                                                    , {
+                                                                                        key: false,
+                                                                                        name: 'StateName',
+                                                                                        index: 'StateName',
+                                                                                        editable: false
+                                                                                    }
+                                                                                    , {
+                                                                                        key: false,
+                                                                                        name: 'CityName',
+                                                                                        index: 'CityName',
+                                                                                        editable: false
+                                                                                    }
+
+                                                                                    , {
+                                                                                        key: false,
+                                                                                        name: 'EmailAddress',
+                                                                                        index: 'EmailAddress',
+                                                                                        editable: false
+                                                                                    }
+                                                                                    , {
+                                                                                        key: false,
+                                                                                        name: 'PanNumber',
+                                                                                        index: 'PanNumber',
+                                                                                        editable: false
+                                                                                    }
+                                                                                    , {
+                                                                                        key: false,
+                                                                                        name: 'PassportNumber',
+                                                                                        index: 'PassportNumber',
+                                                                                        editable: false
+                                                                                    }
+                                                                                    ,
+
+                                                                                    {
+                                                                                        key: true, name: 'Row_Id', index: 'Edit', editable: true, formatter: 'showlink', formatoptions:
+                                                                                        {
+                                                                                            baseLinkUrl: '/Employee/Edit', idName: 'id'
+                                                                                        }
+
+                                                                                    },
+                                                                                    {
+                                                                                        key: true, name: 'Row_Id', index: 'Delete', editable: true, formatter: 'showlink', formatoptions:
+                                                                                        {
+                                                                                            baseLinkUrl: '/Employee/Delete', idName: 'id'
+                                                                                        }
+
+                                                                                    },
+
+                                                                                 
+],
+
+
+                                                                                pager: jQuery('#pager'),
+                                                                                rowNum: 10,
+                                                                                rowList: [10, 20, 30, 40],
+                                                                                height: '100%',
+                                                                                viewrecords: true,
+                                                                                caption: 'Emloyee CRUID Application',
+                                                                                emptyrecords: 'No records to display',
+                                                                                jsonReader:
+                                                                                {
+                                                                                    root: "rows",
+                                                                                    page: "page",
+                                                                                    total: "total",
+                                                                                    records: "records",
+                                                                                    repeatitems: false,
+                                                                                    Id: "0"
+                                                                                },
+                                                                                autowidth: true,
+                                                                                multiselect: false
+                                                                                //pager-you have to choose here what icons should appear at the bottom
+                                                                                //like edit,create,delete icons
+                                                                            })
+                                                                    });
+                                                    </script> }
+

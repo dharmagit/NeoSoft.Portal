@@ -1,0 +1,221 @@
+﻿@model FrontEndApp.EmployeeMaster
+
+@{ ViewBag.Title = "Create"; }
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Employee", FormMethod.Post, new { id = "Create" }))
+{
+@Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Employee</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MobileNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.MobileNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PanNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.PanNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PanNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PassportNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.PassportNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PassportNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @readonly = "true", Value = Model.DateOfBirth.ToString("MM/dd/yyyy"), @class = "form-control datepicker", @id = "DateOfBirth" } })
+                            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateOfJoinee, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateOfJoinee, new { htmlAttributes = new { @readonly = "true", Value = Model.DateOfBirth.ToString("MM/dd/yyyy"), @class = "form-control datepicker", @id = "DateOfJoinee" } })
+                            @Html.ValidationMessageFor(model => model.DateOfJoinee, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CountryId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(m => m.CountryId, new SelectList(Model.CountryMasters, "CountryId", "CountryName"), "Select Country", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.StateId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <select class="form-control" id="StateId" name="StateId" asp-for="StateId"
+                                    asp-items="@(new SelectList(string.Empty, "StateId", "StateName"))"></select>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CityId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <select class="form-control" id="CityId" name="CityId" asp-for="CityId"
+                                    asp-items="@(new SelectList(string.Empty, "CityId", "CityName"))"></select>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.CityId, "", new { @class = "text-danger" })
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            Male
+                            @Html.RadioButtonFor(model => model.Gender, "Male")
+                            Female
+                            @Html.RadioButtonFor(model => model.Gender, "Female")
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+</div>
+
+@{
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.12.0/jquery.validate.min.js"></script>
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+                                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+                                                                <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet" />
+                                                                            <script type="text/javascript">
+
+                                                                                $(document).ready(function () {
+                                                                                    var items = "<option value='0'>Select</option>";
+                                                                                    $('#StateId').html(items);
+                                                                                    $('#CityId').html(items);
+
+
+                                                                                    DateTimePicker();
+
+                                                                                    $("#DateOfBirth").datepicker({
+                                                                                        textboxImageOnly: true,
+                                                                                        textboxImage: 'images/calendar.png',
+                                                                                        changeMonth: true,
+                                                                                        changeYear: true,
+                                                                                        dateFormat: "mm/dd/yy",
+                                                                                        yearRange: "-40:+0",
+                                                                                        onSelect: function (selected) {
+                                                                                            $("#DateOfJoinee").datepicker("option", "minDate", selected)
+                                                                                            //$("#mainContent_txtdol").datepicker("option", "minDate", selected)
+                                                                                        }
+                                                                                    });
+                                                                                    $("#DateOfJoinee").datepicker({
+                                                                                        textboxImageOnly: true,
+                                                                                        textboxImage: 'images/calendar.png',
+                                                                                        changeMonth: true,
+                                                                                        changeYear: true,
+                                                                                        dateFormat: "mm/dd/yy",
+                                                                                        yearRange: "-40:+0",
+                                                                                        onSelect: function (selected) {
+                                                                                            $("#DateOfBirth").datepicker("option", "maxDate", selected)
+                                                                                            //$("#mainContent_txtdol").datepicker("option", "minDate", selected)
+                                                                                        }
+                                                                                    });
+                                                                                    function DateTimePicker() {
+                                                                                        $(".datepicker").datepicker({
+                                                                                            dateFormat: 'mm/dd/yy',
+                                                                                            changeMonth: true,
+                                                                                            changeYear: true,
+                                                                                            showOn: 'button',
+                                                                                            sideBySide: true,
+                                                                                            controlType: 'select',
+                                                                                            buttonText: '<span class="glyphicon glyphicon-calendar" ></span>',
+                                                                                            minDate: new Date()
+                                                                                        });
+                                                                                    }
+
+                                                                                });
+                                                                            </script>
+
+                                                                                        <script type="text/javascript">
+                                                                                            $(document).ready(function () {
+                                                                                                $('#CountryId').change(function () {
+                                                                                                    
+                                                                                                    var url = 'http://localhost:53126/' + "Employee/GetStateList";
+                                                                                                    var ddlsource = "#CountryId";
+                                                                                                    //alert($(ddlsource).val());
+                                                                                                    $.getJSON(url, { CountryId: $(ddlsource).val() }, function (data) {
+                                                                                                        var items = '';
+                                                                                                        $("#StateId").empty();
+                                                                                                        $.each(data, function (i, state) {
+                                                                                                            items += "<option value='" + state.Value + "'>" + state.Text + "</option>";
+                                                                                                        });
+                                                                                                        $('#StateId').html(items);
+                                                                                                    });
+                                                                                                });
+
+                                                                                                $('#StateId').change(function () {
+                                                                                                    var url = 'http://localhost:53126/' + "Employee/GetCityList";
+                                                                                                    var ddlsource = "#StateId";
+                                                                                                    $.getJSON(url, { StateId: $(ddlsource).val() }, function (data) {
+                                                                                                        var items = '';
+                                                                                                        $('#CityId').empty();
+                                                                                                        $.each(data, function (i, city) {
+                                                                                                            items += "<option value='" + city.Value + "'>" + city.Text + "</option>";
+                                                                                                        });
+                                                                                                        $('#CityId').html(items);
+                                                                                                    });
+                                                                                                });
+                                                                                            });
+                                                                                        </script> }
